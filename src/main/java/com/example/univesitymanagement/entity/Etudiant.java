@@ -1,7 +1,6 @@
 package com.example.univesitymanagement.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +14,9 @@ import java.util.Date;
 @Entity
 @Table(name="etudiant")
 public class Etudiant {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nom;
     private String prenom;
     private String cin;
@@ -26,5 +28,7 @@ public class Etudiant {
     private String specialite;
     private String diplome;
     private String situation;
-
+    @Column(nullable = false,unique = true)
+    private String email;
+    private String password;
 }
